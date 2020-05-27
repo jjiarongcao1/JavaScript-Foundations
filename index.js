@@ -114,61 +114,61 @@ mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
-function mortgageCalculator(p, i, n, s) {
-    if (s > 740) {
-            let monthlyInterestRate = i * 0.5;
-            let newMonthlyInterestRate = (i - monthlyInterestRate) / 12;
-            let periods = n * 12;
+// function mortgageCalculator(p, i, n, s) {
+//     if (s > 740) {
+//             let monthlyInterestRate = i * 0.5;
+//             let newMonthlyInterestRate = (i - monthlyInterestRate) / 12;
+//             let periods = n * 12;
             
-            let numerator1 = 1 + newMonthlyInterestRate;
-            let numerator2 = Math.pow(numerator1, periods);
-            let numerator3 = newMonthlyInterestRate * numerator2;
+//             let numerator1 = 1 + newMonthlyInterestRate;
+//             let numerator2 = Math.pow(numerator1, periods);
+//             let numerator3 = newMonthlyInterestRate * numerator2;
 
-            let denominator1 = 1 + newMonthlyInterestRate;
-            let denominator2 = Math.pow(denominator1, periods) - 1
+//             let denominator1 = 1 + newMonthlyInterestRate;
+//             let denominator2 = Math.pow(denominator1, periods) - 1
 
-            let monthlyRate = p * (numerator3 / denominator2);
-            let fixMonthlyRate = monthlyRate.toFixed(2);
+//             let monthlyRate = p * (numerator3 / denominator2);
+//             let fixMonthlyRate = monthlyRate.toFixed(2);
 
-            return fixMonthlyRate;
-    } else if (s < 660) {
-            let monthlyInterestRate = i * 0.5;
-            let newMonthlyInterestRate = (i + monthlyInterestRate) / 12;
-            let periods = n * 12;
+//             return fixMonthlyRate;
+//     } else if (s < 660) {
+//             let monthlyInterestRate = i * 0.5;
+//             let newMonthlyInterestRate = (i + monthlyInterestRate) / 12;
+//             let periods = n * 12;
             
-            let numerator1 = 1 + newMonthlyInterestRate;
-            let numerator2 = Math.pow(numerator1, periods);
-            let numerator3 = newMonthlyInterestRate * numerator2;
+//             let numerator1 = 1 + newMonthlyInterestRate;
+//             let numerator2 = Math.pow(numerator1, periods);
+//             let numerator3 = newMonthlyInterestRate * numerator2;
 
-            let denominator1 = 1 + newMonthlyInterestRate;
-            let denominator2 = Math.pow(denominator1, periods) - 1
+//             let denominator1 = 1 + newMonthlyInterestRate;
+//             let denominator2 = Math.pow(denominator1, periods) - 1
 
-            let monthlyRate = p * (numerator3 / denominator2);
-            let fixMonthlyRate = monthlyRate.toFixed(2);
+//             let monthlyRate = p * (numerator3 / denominator2);
+//             let fixMonthlyRate = monthlyRate.toFixed(2);
 
-            return fixMonthlyRate;
-    } else if (s > 660 && s < 740) {
-            let monthlyInterestRate = i / 12;
-            let periods = n * 12;
+//             return fixMonthlyRate;
+//     } else if (s > 660 && s < 740) {
+//             let monthlyInterestRate = i / 12;
+//             let periods = n * 12;
             
-            let numerator1 = 1 + monthlyInterestRate;
-            let numerator2 = Math.pow(numerator1, periods);
-            let numerator3 = monthlyInterestRate * numerator2;
+//             let numerator1 = 1 + monthlyInterestRate;
+//             let numerator2 = Math.pow(numerator1, periods);
+//             let numerator3 = monthlyInterestRate * numerator2;
 
-            let denominator1 = 1 + monthlyInterestRate;
-            let denominator2 = Math.pow(denominator1, periods) - 1
+//             let denominator1 = 1 + monthlyInterestRate;
+//             let denominator2 = Math.pow(denominator1, periods) - 1
 
-            let monthlyRate = p * (numerator3 / denominator2);
-            let fixMonthlyRate = monthlyRate.toFixed(2);
+//             let monthlyRate = p * (numerator3 / denominator2);
+//             let fixMonthlyRate = monthlyRate.toFixed(2);
 
-            return fixMonthlyRate;
-    }
+//             return fixMonthlyRate;
+//     }
      
-}
+// }
 
-console.log(mortgageCalculator(200000, 0.05, 30, 780));
-console.log(mortgageCalculator(200000, 0.05, 30, 620));
-console.log(mortgageCalculator(200000, 0.05, 30, 700));
+// console.log(mortgageCalculator(200000, 0.05, 30, 780));
+// console.log(mortgageCalculator(200000, 0.05, 30, 620));
+// console.log(mortgageCalculator(200000, 0.05, 30, 700));
 
 
 
@@ -188,7 +188,32 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate(p, r, n) {
+    const name = "Alex Cao";
+    let periods = n * 12;
+    
+    
 
+    for (let r = 0.02; r < 0.06; r+=0.005) {
+        let monthlyInterestRate = r / 12;
+
+        let numerator1 = 1 + monthlyInterestRate;
+        let numerator2 = Math.pow(numerator1, periods);
+        let numerator3 = monthlyInterestRate * numerator2;
+
+        let denominator1 = 1 + monthlyInterestRate;
+        let denominator2 = Math.pow(denominator1, periods) - 1
+
+        let monthlyRate = p * (numerator3 / denominator2);
+
+        console.log(name + ", with an interest rate of " + r.toFixed(3) + ", your monthly rate is $" + Math.round(monthlyRate));
+
+        
+    }
+
+}
+
+console.log(variableInterestRate(200000, 0.04, 30));
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
